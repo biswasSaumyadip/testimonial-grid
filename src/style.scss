@@ -1,0 +1,212 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+$color-purple: #733fc8;
+$color-lilac: #a775f1;
+$color-charcoal: #19202d;
+$color-dark-blue: #48556a;
+
+$color-white: #ffffff;
+
+$color-paragraph: #cfcfcf;
+$color-heading: #ecf2f8;
+
+$color-background: #ecf2f8;
+
+$light: 300;
+$medium: 400;
+$semibold: 600;
+$bold: 700;
+
+$border-radius: 0.8rem;
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 37.5rem) {
+      @content;
+    }
+  } @else if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25rem) {
+      @content;
+    }
+  } @else if $breakpoint == tab-land {
+    @media only screen and (max-width: 75rem) {
+      @content;
+    }
+  } @else if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5rem) {
+      @content;
+    }
+  }
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @include respond(phone) {
+    font-size: 81.25%;
+  }
+}
+
+body {
+  font-family: "Barlow Semi Condensed", serif;
+  font-weight: 400;
+  line-height: 1.6;
+  background-color: $color-background;
+  height: 100vh;
+}
+
+.testimonial {
+  &s__grid {
+    align-content: center;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(23.5rem, 25rem));
+    grid-template-rows: minmax(24rem, 31.2rem) minmax(24rem, 29.6rem);
+    grid-gap: 3rem;
+    height: 100%;
+    justify-content: center;
+
+    @include respond(tab-land) {
+      grid-template-columns: repeat(3, 23rem);
+      grid-template-rows: repeat(3, 35.2rem);
+    }
+
+    @include respond(phone) {
+      align-content: normal;
+      grid-template-columns: auto;
+      grid-template-rows: repeat(5, minmax(max-content, 44.4rem));
+      justify-content: normal;
+      margin: 5rem 2rem;
+    }
+  }
+
+  &-card {
+    border-radius: $border-radius;
+    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+    font-size: 1.3rem;
+    padding: 3rem;
+
+    &__details {
+      color: $color-paragraph;
+      font-size: 1.3rem;
+      font-weight: $medium;
+
+      &.dark {
+        color: $color-dark-blue;
+      }
+    }
+
+    &__header {
+      align-items: center;
+      display: flex;
+      gap: 1.7rem;
+      margin-bottom: 1.8rem;
+    }
+
+    &__highlight {
+      color: $color-white;
+      font-size: 2rem;
+      line-height: 1;
+      margin-bottom: 1.6rem;
+      font-weight: $semibold;
+
+      &.dark {
+        color: $color-dark-blue;
+      }
+    }
+
+    &__info {
+      color: $color-white;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+
+      &.dark {
+        color: $color-dark-blue;
+      }
+    }
+
+    &__image {
+      border-radius: 50%;
+
+      &[src*="patrick"] {
+        border: 2px solid $color-purple;
+      }
+
+      &[src*="daniel"] {
+        border: 2px solid $color-lilac;
+      }
+    }
+
+    &__name {
+      color: $color-heading;
+      font-weight: $medium;
+
+      &#testimonial-kira-title,
+      &#testimonial-jeanette-title {
+        color: $color-dark-blue;
+      }
+    }
+
+    &__role {
+      font-weight: $medium;
+      opacity: 50%;
+    }
+
+    &:first-child {
+      background-color: $color-purple;
+      grid-column: 1 / span 2;
+
+      background-position: 80% 1px;
+      background-image: url("../public/images/bg-pattern-quotation.svg");
+      background-repeat: no-repeat;
+      background-size: 120px 130px;
+
+      @include respond(phone) {
+        grid-column: auto;
+        background-size: 113px 162px;
+      }
+    }
+
+    &:nth-child(2) {
+      background-color: $color-dark-blue;
+    }
+
+    &:nth-child(3) {
+      background-color: $color-white;
+      grid-row: 1 / span 2;
+      grid-column: 4 / 5;
+
+      @include respond(tab-land) {
+        grid-row: 3 / span 1;
+        grid-column: 1 / 4;
+      }
+
+      @include respond(phone) {
+        grid-row: auto;
+        grid-column: auto;
+      }
+    }
+
+    &:nth-child(4) {
+      background-color: $color-white;
+    }
+
+    &:nth-child(5) {
+      background-color: $color-charcoal;
+      grid-column: 2 / 4;
+
+      @include respond(phone) {
+        grid-column: auto;
+      }
+    }
+  }
+}
