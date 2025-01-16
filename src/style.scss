@@ -69,7 +69,7 @@ body {
     align-content: center;
     display: grid;
     grid-template-columns: repeat(4, minmax(23.5rem, 25rem));
-    grid-template-rows: minmax(24rem, 31.2rem) minmax(24rem, 29.6rem);
+    grid-template-rows: minmax(24rem, 30.2rem) minmax(24rem, 29.6rem);
     grid-gap: 3rem;
     height: 100%;
     justify-content: center;
@@ -136,6 +136,8 @@ body {
 
     &__image {
       border-radius: 50%;
+      height: 2.8rem;
+      width: 2.8rem;
 
       &[src*="patrick"] {
         border: 2px solid $color-purple;
