@@ -1,5 +1,5 @@
 {
-  "name": "four-card-section",
+  "name": "testimonial-grid-section",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -17,6 +17,6 @@
     "vite": "^6.0.5"
   },
   "dependencies": {
-    "four-card-section": "file:"
+    "testimonial-grid-section": "file:"
   }
 }
